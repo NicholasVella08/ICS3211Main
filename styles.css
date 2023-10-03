@@ -78,8 +78,24 @@ input[type=checkbox] {
   }
 
   .home{
-    background-image: url("/Assets/Web Backgorund desktop.png");
+    
+    position: relative;
+    
+    
   }
+
+.bg {
+    width: 100%;
+    display: block;
+}
+
+.pill {
+    position: absolute; /* Position the "pill" image absolutely within the "home" section */
+    top: 50%; /* Adjust the top position to center vertically */
+    left: 50%; /* Adjust the left position to center horizontally */
+    transform: translate(-50%, -50%); /* Center the "pill" image precisely */
+}
+
   
   /* APPLYING MEDIA QUERIES */
   @media (max-width: 768px) {
