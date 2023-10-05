@@ -1,132 +1,121 @@
 /* UTILITIES */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: cursive;
-  }
-  
-  a {
-    text-decoration: none;
-  }
-  
-  li {
-    list-style: none;
-  }
-  /* NAVBAR STYLING STARTS */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: cursive;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+/* NAVBAR STYLING STARTS */
 .navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 100px;
-    background-color: #00002C; /* Blue background color */
-    color: #FFFFFF; /* Text color */
-    font-family: 'Lilita One', cursive; /* Use 'Lilita One' font with a fallback to cursive */
-    font-size: 20px; /* Adjust the font size */
-  }
-  
-  .nav-links a {
-    color: #fff;
-  }
-  
-  /* LOGO */
-  .logo {
-    font-size: 32px;
-  }
-  
-  /* NAVBAR MENU */
-  .menu {
-    display: flex;
-    gap: 1em;
-    font-size: 18px;
-  }
-  
-  .menu li:hover {
-    background-color: #00002C; /* Blue background color */
-    border-radius: 5px;
-    transition: 0.3s ease;
-  }
-  
-  .menu li {
-    padding: 5px 14px;
-  }
-  
-  /* DROPDOWN MENU */
-  .services {
-    position: relative; 
-  }
-  
-  
-  
-  .services:hover .dropdown {
-    display: block;
-  }
-  /* CHECKBOX HACK */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #00002C; /* Blue background color */
+  color: #FFFFFF; /* Text color */
+  font-family: 'Lilita One', cursive; /* Use 'Lilita One' font with a fallback to cursive */
+  font-size: 20px; /* Adjust the font size */
+}
+
+.nav-links a {
+  color: #fff;
+}
+
+/* LOGO */
+.logo {
+  font-size: 32px;
+}
+
+/* NAVBAR MENU */
+.menu {
+  display: flex;
+  gap: 1em;
+  font-size: 18px;
+}
+
+.menu li:hover {
+  background-color: #00002C; /* Blue background color */
+  border-radius: 5px;
+  transition: 0.3s ease;
+}
+
+.menu li {
+  padding: 5px 14px;
+}
+
+/* DROPDOWN MENU */
+.services {
+  position: relative; 
+}
+
+
+
+.services:hover .dropdown {
+  display: block;
+}
+/* CHECKBOX HACK */
 
 input[type=checkbox] {
-    display: none;
-  } 
+  display: none;
+} 
+
+/* HAMBURGER MENU */
+.hamburger {
+  display: none;
+  font-size: 24px;
+  user-select: none;
+}
+
+.home{
   
-  /* HAMBURGER MENU */
-  .hamburger {
-    display: none;
-    font-size: 24px;
-    user-select: none;
+  position: relative;
+  background-image: url("/Assets/Web Backgorund desktop.png");
+  background-position: center;
+  height:100vh;
+  
+}
+
+/* APPLYING MEDIA QUERIES */
+@media (max-width: 768px) {
+ .menu {
+    display:none;
+    position: absolute;
+    background-color: #00002C; /* Blue background color */
+    right: 0;
+    left: 0;
+    text-align: center;
+    padding: 16px 0;
   }
 
-  .home{
-    
-    position: relative;
-    
-    
+  .menu li:hover {
+    display: inline-block;
+    background-color: #00002C; /* Blue background color */
+    transition: 0.3s ease;
   }
 
-.bg {
-    width: 100%;
+  .menu li + li {
+    margin-top: 12px;
+  }
+
+  input[type=checkbox]:checked ~ .menu {
     display: block;
-}
-
-.pill {
-    position: absolute; /* Position the "pill" image absolutely within the "home" section */
-    top: 50%; /* Adjust the top position to center vertically */
-    left: 50%; /* Adjust the left position to center horizontally */
-    transform: translate(-50%, -50%); /* Center the "pill" image precisely */
-}
-
-  
-  /* APPLYING MEDIA QUERIES */
-  @media (max-width: 768px) {
-   .menu {
-      display:none;
-      position: absolute;
-      background-color: #00002C; /* Blue background color */
-      right: 0;
-      left: 0;
-      text-align: center;
-      padding: 16px 0;
-    }
-  
-    .menu li:hover {
-      display: inline-block;
-      background-color: #00002C; /* Blue background color */
-      transition: 0.3s ease;
-    }
-  
-    .menu li + li {
-      margin-top: 12px;
-    }
-  
-    input[type=checkbox]:checked ~ .menu {
-      display: block;
-    }
-  
-    .hamburger {
-      display: block;
-    }
-  
-    
   }
+
+  .hamburger {
+    display: block;
+  }
+
+  
+}
 
