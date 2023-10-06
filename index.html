@@ -8,6 +8,8 @@
   <link rel="stylesheet" href="style.css" />
   <title>ICS3211 Website</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lilita+One&display=swap">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 </head>
 
 <body>
@@ -42,9 +44,49 @@
     <img src="./Assets/pill.png" alt="pill" class="pill">
    
    
- </section>
+  </section>
+  <section class="Ask">
+    <div class="AskTitle">
+      Ask Away
+    </div>
+    
+    <div class="monitor">
+      <img src="./Assets/frame.png" alt="frame1" class="frame1">
+      <img src="./Assets/frame.png" alt="frame2" class="frame2">
+      <img src="./Assets/doctor.png" alt="doctor" class="doctor">
+    </div>
+    
+    <input type="text" id="ip2" placeholder="Type Your Question Here...."/>
+
+  
+  
+  </section>
 
 
+  <script>
+    $(document).ready(function() {
+      const homeSection = $('.home');
+      const nextSection = $('.Ask');
+      const targetScrollPosition = homeSection.height() / 4;
+      let scrolledPastQuarter = false;
+
+      $(window).on('scroll', function() {
+        if ($(window).scrollTop() > targetScrollPosition && !scrolledPastQuarter) {
+          scrollToNextSection();
+          scrolledPastQuarter = true;
+        }
+      });
+
+      function scrollToNextSection() {
+        $('html, body').animate({
+          scrollTop: nextSection.offset().top
+        }, 1000); // Adjust the animation duration as needed
+      }
+    });
+  </script>
+
+  
+  
 </body>
 
 </html>

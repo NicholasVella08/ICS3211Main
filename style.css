@@ -136,7 +136,7 @@ input[type=checkbox] {
     top: -100px; /* Start from above the container */
   }
   100% {
-    top: 18px; /* End at the specified top position */
+    top: 20px; /* End at the specified top position */
   }
 }
 
@@ -151,7 +151,109 @@ input[type=checkbox] {
     z-index: -1;
   }
   
+  /* Add a class to control the initial state of the .AskTitle */
+  .Animated .AskTitle {
+    top: -100px;
+    opacity: 0;
+  }
+
+  .Ask {
+    position: relative;
+    /* background-image: url() no-repeat; */
+    background: #00002C;
+    background-size: cover;
+    /* background-position: top center; */
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+  }
+
+  .AskTitle {
+    width: 80%;
+    text-align: center;
+    position: relative; /* Change to relative positioning */
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Lilita One', cursive;
+    color: #FFFFFF;
+    font-size: 120px;
+    line-height: 85%;
+    animation: slideFromTop2 1.5s ease-out forwards; /* Apply the animation */
+    z-index: -3;
+    top: 20px;
+  }
+
+
+  .AskTitle::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+  }
+
+  .monitor {
+    position: relative;
+    background-color: #00CBFF;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    width: 700px;
+    height: 300px;
+    
+  }
   
+  .frame1 {
+    position: absolute;
+    bottom: -120px;
+    right: -166px;
+    max-width: 100%; /* Ensure the frame image doesn't exceed the monitor div */
+    height: auto; /* Maintain the aspect ratio of the image */
+  }
+  .frame2 {
+    position: absolute;
+    bottom: -79px;
+    left: -166px;
+    max-width: 100%; /* Ensure the frame image doesn't exceed the monitor div */
+    height: auto; /* Maintain the aspect ratio of the image */
+    transform: rotate(180deg);
+  }
+
+  .doctor{
+    
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 45%;
+    height: auto;
+    
+  }
+
+  #ip2 {
+    position:relative; 
+    border-radius: 25px;
+    top: 27%;
+    padding: 20px; 
+    width: 700px;
+    height: 15px; 
+    background-color: #00CBFF;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+::placeholder {
+  font-family: 'Lilita One', cursive;
+  color: #00002C;
+
+}
+  
+
+  
+    
   
   
   
@@ -195,7 +297,7 @@ input[type=checkbox] {
         top: -100px; /* Start from above the container */
       }
       100% {
-        top: 32px; /* End at the specified top position */
+        top: 40px; /* End at the specified top position */
       }
     }
 
@@ -209,9 +311,13 @@ input[type=checkbox] {
         opacity: 0;
       }
       100% {
-        top: 65%; /* End at the specified top position */
+        top: 60%; /* End at the specified top position */
         opacity: 1;
       }
+    }
+
+    .AskTitle{
+      font-size: 80px;
     }
   
     
