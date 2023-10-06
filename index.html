@@ -27,15 +27,15 @@
       <!-- NAVIGATION MENUS -->
       <div class="menu">
 
-        <li><a href="/">Home</a></li>
+        <li><a href="#home">Home</a></li>
         <li><a href="/">About Us</a></li>
-        <li><a href="/">Ask</a></li>
-        <li><a href="/">Contact Us</a></li>
+        <li><a href="#Ask">Ask</a></li>
+        <li><a href="#map">Map</a></li>
       </div>
     </ul>
   </nav>
  
-  <section class="home">
+  <section class="home" id="home">
     <div class="Title">
       Does Antibiotics Do The Job?
     </div>
@@ -45,7 +45,7 @@
    
    
   </section>
-  <section class="Ask">
+  <section class="Ask" id="Ask">
     <div class="AskTitle">
       Ask Away
     </div>
@@ -62,18 +62,23 @@
   
   </section>
 
-  
-
+  <section class="map" id="map">
+    <div class="mapTitle">
+      Find the nearest pharmacy for the right medicine
+    </div>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d51724.11630473486!2d14.522985785396973!3d35.87946480861191!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1spharmacy!5e0!3m2!1sen!2smt!4v1696634478616!5m2!1sen!2smt" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    
+  </section>
 
   <script>
     $(document).ready(function() {
       const homeSection = $('.home');
-      const nextSection = $('.Ask');
-      const targetScrollPosition = homeSection.height() / 4;
+      const askSection = $('.Ask');
+      const targetScrollPosition = homeSection.height() / 9;
       let scrolledPastQuarter = false;
 
-      $(window).on('scroll', function() {
-        if ($(window).scrollTop() > targetScrollPosition && !scrolledPastQuarter) {
+      $(document).on('scroll', function() {
+        if ($(document).scrollTop() > targetScrollPosition && !scrolledPastQuarter) {
           scrollToNextSection();
           scrolledPastQuarter = true;
         }
@@ -81,11 +86,13 @@
 
       function scrollToNextSection() {
         $('html, body').animate({
-          scrollTop: nextSection.offset().top
+          scrollTop: askSection.offset().top
         }, 1000); // Adjust the animation duration as needed
       }
     });
   </script>
+
+  
 
   
   
