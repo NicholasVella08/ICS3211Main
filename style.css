@@ -408,7 +408,7 @@ input[type=checkbox] {
   .map{
     height: 100vh;
     background: #00002C;
-    background: linear-gradient(180deg, #00002C 0%, rgba(9,9,121,1) 59%, rgba(0,212,255,1) 100%);
+    background: linear-gradient(180deg, #00002C 0%, rgb(1, 1, 97) 59%, rgba(0,212,255,1) 100%);
   }
 
   .map iframe{
