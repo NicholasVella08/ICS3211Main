@@ -7,6 +7,8 @@
   
   body {
     font-family: cursive;
+    z-index: -10;
+    position: relative;
   }
   
   a {
@@ -302,8 +304,106 @@ input[type=checkbox] {
   }
   
 
+
+  /* list.html*/
+  .listHome{
+  
+    position: relative;
+    /*background-image: url() no-repeat;*/
+    background: #00002C ;
+    background-size: cover;
+  
+  
+    /*background-position: top center;*/
+    width: 100%;
+    height: 100%;
+    z-index: -1; 
+    overflow: hidden;
+    
+  }  
+  .listTitle {
+    width: 80%;
+    text-align: center;
+    position: relative; /* Change to relative positioning */
+    top: -100px; /* Start from above the container */
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Lilita One', cursive;
+    color: #FFFFFF;
+    font-size: 90px;
+    line-height: 85%;
+    animation: slideFromTop 1.5s ease-out forwards; /* Apply the animation */
+  }
+  
+  @keyframes slideFromTop {
+    0% {
+      top: -100px; /* Start from above the container */
+    }
+    100% {
+      top: 20px; /* End at the specified top position */
+    }
+  }
   
     
+    .listTitle::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: -1;
+    }
+    /* Apply styles to the body with the "list-body" ID */
+    .listHome .image-grid {
+      margin-top: 2%;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      /*gap: 10px;*/
+      padding: 10px;
+      height: 100vh; /* Set the height to 100% of the viewport height */
+      
+    }
+    
+    .image {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin: 0 auto; /* Center the image container horizontally */
+      padding: 5px; /* Reduce the padding to make the images larger */
+      width: 100%; /* Set the width to 100% to make the grid items smaller */
+      max-width: 60%; /* Limit the maximum width of grid items */
+    }
+    
+    .image img {
+      max-width: 100%; /* Ensure images are not wider than their original size */
+      height: auto;
+      z-index: 2;
+    }
+
+    .image p{
+      font-family: 'Lilita One', cursive;
+      color: #FFFFFF;
+      font-size: 25px;
+      z-index: 2;
+    }
+    
+    /* Media query for small screens */
+    @media (max-width: 768px) {
+
+      .listTitle{
+        font-size: 50px;
+      }
+      .listHome .image-grid {
+        margin-top: 10%;
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    
+      
+
   
   
   
