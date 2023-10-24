@@ -1,133 +1,136 @@
 /* UTILITIES */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: cursive;
-    z-index: -10;
-    position: relative;
-  }
-  
-  a {
-    text-decoration: none;
-  }
-  
-  li {
-    list-style: none;
-  }
-  /* NAVBAR STYLING STARTS */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: cursive;
+  z-index: -10;
+  position: relative;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+section {
+  padding: 75px;
+}
+/* NAVBAR STYLING STARTS */
 .navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px;
-    background-color: #00002C; /* Blue background color */
-    color: #FFFFFF; /* Text color */
-    font-family: 'Lilita One', cursive; /* Use 'Lilita One' font with a fallback to cursive */
-    font-size: 20px; /* Adjust the font size */
-  }
-  
-  .nav-links a {
-    color: #fff;
-  }
-  
-  /* LOGO */
-  .logo {
-    font-size: 32px;
-  }
-  
-  /* NAVBAR MENU */
-  .menu {
-    display: flex;
-    
-    gap: 1em;
-    font-size: 18px;
-  }
-  
-  .menu li:hover {
-    background-color: #00002C; /* Blue background color */
-    border-radius: 5px;
-    transition: 0.3s ease;
-    z-index: 2; 
-  }
-  
-  .menu li {
-    padding: 5px 14px;
-  }
-  
-  /* DROPDOWN MENU */
-  .services {
-    position: relative; 
-  }
-  
-  
-  
-  .services:hover .dropdown {
-    display: block;
-  }
-  /* CHECKBOX HACK */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #00002c; /* Blue background color */
+  color: #ffffff; /* Text color */
+  font-family: "Lilita One", cursive; /* Use 'Lilita One' font with a fallback to cursive */
+  font-size: 20px; /* Adjust the font size */
+  position: fixed;
+  width: 100%;
+}
 
-input[type=checkbox] {
-    display: none;
-  } 
-  
-  /* HAMBURGER MENU */
-  .hamburger {
-    display: none;
-    font-size: 24px;
-    user-select: none;
-  }
+.nav-links a {
+  color: #fff;
+}
 
-  .home{
-  
-    position: relative;
-    /*background-image: url() no-repeat;*/
-    background: #666 url("./Assets/br.png") no-repeat;
-    background-size: cover;
-  
-  
-    /*background-position: top center;*/
-    width: 100%;
-    height: 100vh;
-    z-index: -1; 
-    
+/* LOGO */
+.logo {
+  font-size: 32px;
+  color: #fff;
+}
+
+/* NAVBAR MENU */
+.menu {
+  display: flex;
+
+  gap: 1em;
+  font-size: 18px;
+}
+
+.menu li:hover {
+  background-color: #00002c; /* Blue background color */
+  border-radius: 5px;
+  transition: 0.3s ease;
+  z-index: 2;
+}
+
+.menu li {
+  padding: 5px 14px;
+}
+
+/* DROPDOWN MENU */
+.services {
+  position: relative;
+}
+
+.services:hover .dropdown {
+  display: block;
+}
+/* CHECKBOX HACK */
+
+input[type="checkbox"] {
+  display: none;
+}
+
+/* HAMBURGER MENU */
+.hamburger {
+  display: none;
+  font-size: 24px;
+  user-select: none;
+}
+
+.home {
+  position: relative;
+  /*background-image: url() no-repeat;*/
+  background: #666 url("./Assets/br.png") no-repeat;
+  background-size: cover;
+
+  /*background-position: top center;*/
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
+  padding-top: 75px;
+}
+
+/* Styles for the .pill image */
+.pill {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -30%);
+  max-width: 35%;
+  height: auto;
+  opacity: 0; /* Initially hide the image */
+  animation: slideFromBottom 1.5s ease-out forwards; /* Apply the animation */
+}
+
+@keyframes slideFromBottom {
+  0% {
+    top: 100%; /* Start from the bottom */
+    opacity: 0;
   }
-  
-  /* Styles for the .pill image */
-  .pill {
-    position: absolute;
-    top: 60%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    max-width: 35%;
-    height: auto;
-    opacity: 0; /* Initially hide the image */
-    animation: slideFromBottom 1.5s ease-out forwards; /* Apply the animation */
+  100% {
+    top: 60%; /* End at the specified top position */
+    opacity: 1;
   }
-  
-  @keyframes slideFromBottom {
-    0% {
-      top: 100%; /* Start from the bottom */
-      opacity: 0;
-    }
-    100% {
-      top: 60%; /* End at the specified top position */
-      opacity: 1;
-    }
-  }
-  
-  .Title {
+}
+
+.Title {
   width: 80%;
   text-align: center;
   position: relative; /* Change to relative positioning */
   top: -100px; /* Start from above the container */
   left: 50%;
   transform: translateX(-50%);
-  font-family: 'Lilita One', cursive;
-  color: #FFFFFF;
+  font-family: "Lilita One", cursive;
+  color: #ffffff;
   font-size: 120px;
   line-height: 85%;
   animation: slideFromTop 1.5s ease-out forwards; /* Apply the animation */
@@ -142,398 +145,378 @@ input[type=checkbox] {
   }
 }
 
+.Title::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+/* Add a class to control the initial state of the .AskTitle */
+.Animated .AskTitle {
+  top: -100px;
+  opacity: 0;
+}
+
+.Ask {
+  position: relative;
+  /* background-image: url() no-repeat; */
+  background: #00002c;
+  background-size: cover;
+  /* background-position: top center; */
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
+}
+
+.AskTitle {
+  width: 80%;
+  text-align: center;
+  position: relative; /* Change to relative positioning */
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: "Lilita One", cursive;
+  color: #ffffff;
+  font-size: 120px;
+  line-height: 85%;
+  animation: slideFromTop2 1.5s ease-out forwards; /* Apply the animation */
+  z-index: -3;
+  top: 20px;
+}
+
+.AskTitle::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+.monitor {
+  position: relative;
+  background-color: #00cbff;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 700px;
+  height: 300px;
+  z-index: 2;
+}
+
+.frame1 {
+  position: absolute;
+  top: 60px;
+  right: -35px;
+  max-width: 50%; /* Ensure the frame image doesn't exceed the monitor div */
+  height: auto; /* Maintain the aspect ratio of the image */
+  z-index: 2;
+}
+.frame2 {
+  position: absolute;
+  bottom: 60px;
+  left: -35px;
+  max-width: 50%; /* Ensure the frame image doesn't exceed the monitor div */
+  height: auto; /* Maintain the aspect ratio of the image */
+  transform: rotate(180deg);
+  z-index: 2;
+}
+
+.doctor {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 45%;
+  height: auto;
+  z-index: 2;
+}
+
+#ip2 {
+  position: relative;
+  border-radius: 25px;
+  top: 30%;
+  padding: 20px;
+  width: 700px;
+  height: 15px;
+  background-color: #00cbff;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: index 5; /* Set a high z-index value */
+}
+
+::placeholder {
+  font-family: "Lilita One", cursive;
+  color: #00002c;
+  text-align: left;
+  font-size: 15px;
+}
+
+.map {
+  height: 100vh;
+  background: #00002c;
+  background: linear-gradient(
+    180deg,
+    #00002c 0%,
+    rgba(9, 9, 121, 1) 59%,
+    rgba(0, 212, 255, 1) 100%
+  );
+}
+
+.map iframe {
+  position: relative;
+  top: 40%;
+  left: 70%;
+  transform: translate(-50%, -50%);
+}
+
+.mapTitle {
+  width: 40%;
+  text-align: center;
+  position: relative; /* Change to relative positioning */
+  top: 40%;
+  left: 5%;
+  font-family: "Lilita One", cursive;
+  color: #ffffff;
+  font-size: 50px;
+  line-height: 85%;
+}
+
+/* Style the footer */
+footer {
+  background-color: #333; /* Background color */
+  color: #fff; /* Text color */
+  text-align: center; /* Center-align text */
+  padding: 20px; /* Add some padding for spacing */
+}
+
+/* Style the text inside the footer */
+.footer-content {
+  font-size: 14px; /* Font size */
+}
+
+/* list.html*/
+.listHome {
+  position: relative;
+  /*background-image: url() no-repeat;*/
+  background: #00002c;
+  background-size: cover;
+
+  /*background-position: top center;*/
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
   
-  .Title::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: -1;
-  }
-  
-  /* Add a class to control the initial state of the .AskTitle */
-  .Animated .AskTitle {
-    top: -100px;
-    opacity: 0;
-  }
+  padding-top: 75px;
+}
+.listTitle {
+  width: 80%;
+  text-align: center;
+  position: relative; /* Change to relative positioning */
+  top: -100px; /* Start from above the container */
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: "Lilita One", cursive;
+  color: #ffffff;
+  font-size: 90px;
+  line-height: 85%;
+  animation: slideFromTop 1.5s ease-out forwards; /* Apply the animation */
+}
 
-  .Ask {
-    position: relative;
-    /* background-image: url() no-repeat; */
-    background: #00002C;
-    background-size: cover;
-    /* background-position: top center; */
-    width: 100%;
-    height: 100vh;
-    z-index: -1;
-  }
-
-  .AskTitle {
-    width: 80%;
-    text-align: center;
-    position: relative; /* Change to relative positioning */
-    left: 50%;
-    transform: translateX(-50%);
-    font-family: 'Lilita One', cursive;
-    color: #FFFFFF;
-    font-size: 120px;
-    line-height: 85%;
-    animation: slideFromTop2 1.5s ease-out forwards; /* Apply the animation */
-    z-index: -3;
-    top: 20px;
-  }
-
-
-  .AskTitle::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: -1;
-  }
-
-  .monitor {
-    position: relative;
-    background-color: #00CBFF;
-    top: 35%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    
-    width: 700px;
-    height: 300px;
-    z-index: 2;
-    
-  }
-  
-  .frame1 {
-    position: absolute;
-    top: 60px;
-    right: -35px;
-    max-width: 50%; /* Ensure the frame image doesn't exceed the monitor div */
-    height: auto; /* Maintain the aspect ratio of the image */
-    z-index: 2;
-  }
-  .frame2 {
-    position: absolute;
-    bottom: 60px;
-    left: -35px;
-    max-width: 50%; /* Ensure the frame image doesn't exceed the monitor div */
-    height: auto; /* Maintain the aspect ratio of the image */
-    transform: rotate(180deg);
-    z-index: 2;
-  }
-
-  .doctor{
-    
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    max-width: 45%;
-    height: auto;
-    z-index: 2;
-
-    
-  }
-
-  #ip2 {
-    position: relative; 
-    border-radius: 25px;
-    top: 30%;
-    padding: 20px; 
-    width: 700px;
-    height: 15px; 
-    background-color: #00CBFF;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: index 5; /* Set a high z-index value */
-  }
-
-  ::placeholder {
-    font-family: 'Lilita One', cursive;
-    color: #00002C;
-    text-align: left;
-    font-size: 15px;
-
-  }
-
-  .map{
-    height: 100vh;
-    background: #00002C;
-    background: linear-gradient(180deg, #00002C 0%, rgba(9,9,121,1) 59%, rgba(0,212,255,1) 100%);
-  }
-
-  .map iframe{
-    position: relative;
-    top: 40%;
-    left: 70%;
-    transform: translate(-50%, -50%);
-  }
-
-  .mapTitle{
-    width: 40%;
-    text-align: center;
-    position: relative; /* Change to relative positioning */
-    top: 40%;
-    left: 5%;
-    font-family: 'Lilita One', cursive;
-    color: #FFFFFF;
-    font-size: 50px;
-    line-height: 85%;
-  }
-
-
-
-
-  
-  /* Style the footer */
-  footer {
-    background-color: #333; /* Background color */
-    color: #fff; /* Text color */
-    text-align: center; /* Center-align text */
-    padding: 20px; /* Add some padding for spacing */
-  }
-
-  /* Style the text inside the footer */
-  .footer-content {
-    font-size: 14px; /* Font size */
-  }
-  
-
-
-  /* list.html*/
-  .listHome{
-  
-    position: relative;
-    /*background-image: url() no-repeat;*/
-    background: #00002C ;
-    background-size: cover;
-  
-  
-    /*background-position: top center;*/
-    width: 100%;
-    height: 100%;
-    z-index: -1; 
-    overflow: hidden;
-    
-  }  
-  .listTitle {
-    width: 80%;
-    text-align: center;
-    position: relative; /* Change to relative positioning */
+@keyframes slideFromTop {
+  0% {
     top: -100px; /* Start from above the container */
-    left: 50%;
-    transform: translateX(-50%);
-    font-family: 'Lilita One', cursive;
-    color: #FFFFFF;
-    font-size: 90px;
-    line-height: 85%;
+  }
+  100% {
+    top: 20px; /* End at the specified top position */
+  }
+}
+
+.listTitle::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
+/* Apply styles to the body with the "list-body" ID */
+.listHome .image-grid {
+  margin-top: 2%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  /*gap: 10px;*/
+  padding: 10px;
+  height: 100vh; /* Set the height to 100% of the viewport height */
+}
+
+.image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 0 auto; /* Center the image container horizontally */
+  padding: 5px; /* Reduce the padding to make the images larger */
+  width: 100%; /* Set the width to 100% to make the grid items smaller */
+  max-width: 60%; /* Limit the maximum width of grid items */
+}
+
+.image img {
+  max-width: 100%; /* Ensure images are not wider than their original size */
+  height: auto;
+  z-index: 2;
+}
+
+.image p {
+  font-family: "Lilita One", cursive;
+  color: #ffffff;
+  font-size: 25px;
+  z-index: 2;
+}
+
+/* Media query for small screens */
+@media (max-width: 768px) {
+  .listTitle {
+    font-size: 50px;
+  }
+  .listHome .image-grid {
+    margin-top: 10%;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* APPLYING MEDIA QUERIES */
+@media (max-width: 768px) {
+  .menu {
+    display: none;
+    position: absolute;
+    background-color: #00002c; /* Blue background color */
+    right: 0;
+    left: 0;
+    text-align: center;
+    padding: 16px 0;
+  }
+
+  .menu li:hover {
+    display: inline-block;
+    background-color: #00002c; /* Blue background color */
+    transition: 0.3s ease;
+  }
+
+  .menu li + li {
+    margin-top: 12px;
+  }
+
+  input[type="checkbox"]:checked ~ .menu {
+    display: block;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .Title {
+    font-size: 70px;
     animation: slideFromTop 1.5s ease-out forwards; /* Apply the animation */
   }
-  
   @keyframes slideFromTop {
     0% {
       top: -100px; /* Start from above the container */
     }
     100% {
-      top: 20px; /* End at the specified top position */
+      top: 40px; /* End at the specified top position */
     }
   }
-  
-    
-    .listTitle::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      z-index: -1;
-    }
-    /* Apply styles to the body with the "list-body" ID */
-    .listHome .image-grid {
-      margin-top: 2%;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      /*gap: 10px;*/
-      padding: 10px;
-      height: 100vh; /* Set the height to 100% of the viewport height */
-      
-    }
-    
-    .image {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      margin: 0 auto; /* Center the image container horizontally */
-      padding: 5px; /* Reduce the padding to make the images larger */
-      width: 100%; /* Set the width to 100% to make the grid items smaller */
-      max-width: 60%; /* Limit the maximum width of grid items */
-    }
-    
-    .image img {
-      max-width: 100%; /* Ensure images are not wider than their original size */
-      height: auto;
-      z-index: 2;
-    }
 
-    .image p{
-      font-family: 'Lilita One', cursive;
-      color: #FFFFFF;
-      font-size: 25px;
-      z-index: 2;
-    }
-    
-    /* Media query for small screens */
-    @media (max-width: 768px) {
-
-      .listTitle{
-        font-size: 50px;
-      }
-      .listHome .image-grid {
-        margin-top: 10%;
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-    
-    
-      
-
-  
-  
-  
-  
-  /* APPLYING MEDIA QUERIES */
-  @media (max-width: 768px) {
-   .menu {
-      display:none;
-      position: absolute;
-      background-color: #00002C; /* Blue background color */
-      right: 0;
-      left: 0;
-      text-align: center;
-      padding: 16px 0;
-    }
-  
-    .menu li:hover {
-      display: inline-block;
-      background-color: #00002C; /* Blue background color */
-      transition: 0.3s ease;
-    }
-  
-    .menu li + li {
-      margin-top: 12px;
-    }
-  
-    input[type=checkbox]:checked ~ .menu {
-      display: block;
-    }
-  
-    .hamburger {
-      display: block;
-    }
-
-    .Title {
-      font-size: 70px;
-      animation: slideFromTop 1.5s ease-out forwards; /* Apply the animation */
-    }
-    @keyframes slideFromTop {
-      0% {
-        top: -100px; /* Start from above the container */
-      }
-      100% {
-        top: 40px; /* End at the specified top position */
-      }
-    }
-
-    .pill {
-      max-width: 80%;
-      animation: slideFromBottom 1.5s ease-out forwards; /* Apply the animation */
-    }
-    @keyframes slideFromBottom {
-      0% {
-        top: 100%; /* Start from the bottom */
-        opacity: 0;
-      }
-      100% {
-        top: 60%; /* End at the specified top position */
-        opacity: 1;
-      }
-    }
-
-    .AskTitle{
-      font-size: 80px;
-    }
-
-    .monitor {
-      position: relative;
-      background-color: #00CBFF;
-      top: 25%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      
-      width: 231px;
-      height: 231px;
-      z-index: 2;
-      
-    }
-    
-    .frame1 {
-      top: 105px;
-      right: -20px;
-      max-width: 80%; /* Ensure the frame image doesn't exceed the monitor div */
-      height: auto; /* Maintain the aspect ratio of the image */
-    }
-
-    .frame2 {
-      bottom: 105px;
-      left: -20px;
-      max-width: 80%; /* Ensure the frame image doesn't exceed the monitor div */
-    }
-  
-    .doctor{
-      left: 50%;
-      max-width: 90%;
-     }
-  
-    #ip2 {
-      width: 310px;
+  .pill {
+    max-width: 80%;
+    animation: slideFromBottom 1.5s ease-out forwards; /* Apply the animation */
   }
-  
-  .map{
-    height: 100vh;
-    background: #00002C;
-    background: linear-gradient(180deg, #00002C 0%, rgb(1, 1, 97) 59%, rgba(0,212,255,1) 100%);
+  @keyframes slideFromBottom {
+    0% {
+      top: 100%; /* Start from the bottom */
+      opacity: 0;
+    }
+    100% {
+      top: 60%; /* End at the specified top position */
+      opacity: 1;
+    }
   }
 
-  .map iframe{
+  .AskTitle {
+    font-size: 80px;
+  }
+
+  .monitor {
     position: relative;
-    
+    background-color: #00cbff;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 231px;
+    height: 231px;
+    z-index: 2;
+  }
+
+  .frame1 {
+    top: 105px;
+    right: -20px;
+    max-width: 80%; /* Ensure the frame image doesn't exceed the monitor div */
+    height: auto; /* Maintain the aspect ratio of the image */
+  }
+
+  .frame2 {
+    bottom: 105px;
+    left: -20px;
+    max-width: 80%; /* Ensure the frame image doesn't exceed the monitor div */
+  }
+
+  .doctor {
+    left: 50%;
+    max-width: 90%;
+  }
+
+  #ip2 {
+    width: 310px;
+  }
+
+  .map {
+    height: 100vh;
+    background: #00002c;
+    background: linear-gradient(
+      180deg,
+      #00002c 0%,
+      rgb(1, 1, 97) 59%,
+      rgba(0, 212, 255, 1) 100%
+    );
+  }
+
+  .map iframe {
+    position: relative;
+
     left: 50%;
     width: 280px;
     height: 300px;
     transform: translate(-50%, -50%);
   }
 
-  .mapTitle{
+  .mapTitle {
     width: 80%;
     text-align: center;
     position: relative; /* Change to relative positioning */
     top: 10%;
     left: 10%;
-    font-family: 'Lilita One', cursive;
-    color: #FFFFFF;
+    font-family: "Lilita One", cursive;
+    color: #ffffff;
     font-size: 40px;
     line-height: 85%;
   }
-  
-  
-  
-    
-  }
-
+}

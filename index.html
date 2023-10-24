@@ -1,101 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>ICS3211 Website</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Lilita+One&display=swap"
+    />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
-  <title>ICS3211 Website</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lilita+One&display=swap">
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <body>
+    <nav class="navbar">
+      <!-- LOGO -->
+      <li><a class="logo" href="#home">Antibiotics</a></li>
 
-</head>
+      <!-- NAVIGATION MENU -->
+      <ul class="nav-links">
+        <!-- USING CHECKBOX HACK -->
+        <input type="checkbox" id="checkbox_toggle" />
+        <label for="checkbox_toggle" class="hamburger">&#9776;</label>
 
-<body>
-  <nav class="navbar">
-    <!-- LOGO -->
-    <div class="logo">Antibiotics</div>
+        <!-- NAVIGATION MENUS -->
+        <div class="menu">
+          <li><a href="#home">Home</a></li>
+          <li><a href="list.html">My Cabinet</a></li>
+          <li><a href="#Ask">Ask</a></li>
+          <li><a href="#map">Map</a></li>
+        </div>
+      </ul>
+    </nav>
 
-    <!-- NAVIGATION MENU -->
-    <ul class="nav-links">
+    <section class="home" id="home">
+      <div class="Title">Does Antibiotics Do The Job?</div>
 
-      <!-- USING CHECKBOX HACK -->
-      <input type="checkbox" id="checkbox_toggle" />
-      <label for="checkbox_toggle" class="hamburger">&#9776;</label>
+      <img src="./Assets/pill.png" alt="pill" class="pill" />
+    </section>
 
-      <!-- NAVIGATION MENUS -->
-      <div class="menu">
+    <section class="Ask" id="Ask">
+      <div class="AskTitle">Ask Away</div>
 
-        <li><a href="#home">Home</a></li>
-        <li><a href="list.html">My Cabinet</a></li>
-        <li><a href="#Ask">Ask</a></li>
-        <li><a href="#map">Map</a></li>
+      <div class="monitor">
+        <img src="./Assets/frame.png" alt="frame1" class="frame1" />
+        <img src="./Assets/frame.png" alt="frame2" class="frame2" />
+        <img src="./Assets/doctor.png" alt="doctor" class="doctor" />
       </div>
-    </ul>
-  </nav>
- 
-  <section class="home" id="home">
-    <div class="Title">
-      Does Antibiotics Do The Job?
-    </div>
-    
-    
-    <img src="./Assets/pill.png" alt="pill" class="pill">
-   
-   
-  </section>
-  <section class="Ask" id="Ask">
-    <div class="AskTitle">
-      Ask Away
-    </div>
-    
-    <div class="monitor">
-      <img src="./Assets/frame.png" alt="frame1" class="frame1">
-      <img src="./Assets/frame.png" alt="frame2" class="frame2">
-      <img src="./Assets/doctor.png" alt="doctor" class="doctor">
-    </div>
-    
-    <input type="text" id="ip2" placeholder="Type Your Question Here...." maxlength="50"/>
 
-  
-  
-  </section>
+      <input
+        type="text"
+        id="ip2"
+        placeholder="Type Your Question Here...."
+        maxlength="50"
+      />
+    </section>
 
-  <section class="map" id="map">
-    <div class="mapTitle">
-      Find the nearest pharmacy for the right medicine
-    </div>
-    <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d51724.11630473486!2d14.522985785396973!3d35.87946480861191!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1spharmacy!5e0!3m2!1sen!2smt!4v1696634478616!5m2!1sen!2smt" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    
-  </section>
+    <section class="map" id="map">
+      <div class="mapTitle">
+        Find the nearest pharmacy for the right medicine
+      </div>
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d51724.11630473486!2d14.522985785396973!3d35.87946480861191!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1spharmacy!5e0!3m2!1sen!2smt!4v1696634478616!5m2!1sen!2smt"
+        width="600"
+        height="450"
+        style="border: 0"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+    </section>
 
-  <script>
-    $(document).ready(function() {
-      const homeSection = $('.home');
-      const askSection = $('.Ask');
-      const targetScrollPosition = homeSection.height() / 9;
-      let scrolledPastQuarter = false;
+    <script>
+      $(document).ready(function () {
+        const homeSection = $(".home");
+        const askSection = $(".Ask");
+        const targetScrollPosition = homeSection.height() / 9;
+        let scrolledPastQuarter = false;
 
-      $(document).on('scroll', function() {
-        if ($(document).scrollTop() > targetScrollPosition && !scrolledPastQuarter) {
-          scrollToNextSection();
-          scrolledPastQuarter = true;
+        $(document).on("scroll", function () {
+          if (
+            $(document).scrollTop() > targetScrollPosition &&
+            !scrolledPastQuarter
+          ) {
+            scrollToNextSection();
+            scrolledPastQuarter = true;
+          }
+        });
+
+        function scrollToNextSection() {
+          $("html, body").animate(
+            {
+              scrollTop: askSection.offset().top,
+            },
+            1000
+          ); // Adjust the animation duration as needed
         }
       });
-
-      function scrollToNextSection() {
-        $('html, body').animate({
-          scrollTop: askSection.offset().top
-        }, 1000); // Adjust the animation duration as needed
-      }
-    });
-  </script>
-
-  
-
-  
-  
-</body>
-
+    </script>
+  </body>
 </html>
