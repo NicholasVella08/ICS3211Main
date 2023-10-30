@@ -89,7 +89,7 @@ input[type="checkbox"] {
 .home {
   position: relative;
   /*background-image: url() no-repeat;*/
-  background: #666 url("./Assets/br.png") no-repeat;
+  background: #666 url("./assets/background.png") no-repeat;
   background-size: cover;
 
   /*background-position: top center;*/
