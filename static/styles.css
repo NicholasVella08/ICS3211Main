@@ -89,7 +89,7 @@ input[type="checkbox"] {
 .home {
   position: relative;
   /*background-image: url() no-repeat;*/
-  background: #666 url("./Assets/br.png") no-repeat;
+  background: #666 url("./assets/background.png") no-repeat;
   background-size: cover;
 
   /*background-position: top center;*/
@@ -312,7 +312,7 @@ footer {
   height: 100%;
   z-index: -1;
   overflow: hidden;
-  
+
   padding-top: 75px;
 }
 .listTitle {
@@ -389,12 +389,8 @@ footer {
   .listHome .image-grid {
     margin-top: 12%;
     grid-template-columns: repeat(2, 1fr);
-    justify-content: center
-    
-    
+    justify-content: center;
   }
-
-  
   .image {
     width: 100%; /* Make each frame take the full width on small screens */
     max-width: 100%; /* Remove the maximum width limit */
@@ -432,7 +428,7 @@ footer {
     display: block;
   }
 
-  .Title {
+  .Title {    
     display: flex;
     justify-content: center;
     font-size: 70px;
