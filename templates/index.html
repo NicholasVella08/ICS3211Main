@@ -1,0 +1,39 @@
+{% extends 'base.html' %} {% block content %}
+<section class="home" id="home">
+  <div class="Title">Do Antibiotics Do The Job?</div>
+
+  <img src="static/assets/pill.png" alt="pill" class="pill" />
+</section>
+
+<section class="Ask" id="ask">
+  <div class="AskTitle">Ask Away</div>
+
+  <div class="monitor">
+    <img src="static/assets/frame.png" alt="frame1" class="frame1" />
+    <img src="static/assets/frame.png" alt="frame2" class="frame2" />
+    <img src="static/assets/doctor.png" alt="doctor" class="doctor" />
+  </div>
+
+  <input
+    type="text"
+    id="ip2"
+    placeholder="Type Your Question Here...."
+    maxlength="50"
+  />
+</section>
+
+<section class="map" id="map">
+  <div class="mapTitle">
+    Find the nearest pharmacy for the right medicine
+  </div>
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d51724.11630473486!2d14.522985785396973!3d35.87946480861191!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1spharmacy!5e0!3m2!1sen!2smt!4v1696634478616!5m2!1sen!2smt"
+    width="600"
+    height="450"
+    style="border: 0"
+    allowfullscreen=""
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"
+  ></iframe>
+</section>
+{% endblock %}
