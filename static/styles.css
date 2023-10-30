@@ -433,6 +433,7 @@ footer {
     justify-content: center;
     font-size: 70px;
     animation: slideFromTop 1.5s ease-out forwards; /* Apply the animation */
+    
   }
   @keyframes slideFromTop {
     0% {
