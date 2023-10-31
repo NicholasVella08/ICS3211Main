@@ -1,5 +1,7 @@
-from flask import Flask, redirect, render_template, send_file, url_for
+import time
+from flask import Flask, Response, redirect, render_template, request, send_file, url_for
 from datetime import datetime
+import g4f
 
 # Define the app using Flask
 app = Flask(__name__)
@@ -19,6 +21,26 @@ def about():
 
     return render_template('my-cabinet.html', data=data)
 
+messages = [{"role": "system", "content": "I want you to act like a medical chatbot named Medi-bot. The chatbot will ask questions about the illness which a user may be having and will then inform the user on whether they need antibiotics or not. The chatbot will also ask follow up questions to narrow down the solution, such as age and severity of issue."}]
+
+def generate_text_stream(question):
+    messages.append({"role": "user", "content": question})
+
+    response = g4f.ChatCompletion.create(
+        model=g4f.models.gpt_4,
+        messages=messages,
+        stream=True,
+        provider=g4f.Provider.Bing,
+    )
+    
+    for message in response:
+        yield message
+
+@app.route("/get")
+def get_bot_response():
+    userText = request.args.get('msg')
+    
+    return Response(generate_text_stream(str(userText)), content_type='text/plain')
 
 if __name__ == '__main__':
     app.run(debug=True)
