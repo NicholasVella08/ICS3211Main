@@ -168,23 +168,23 @@ input[type="checkbox"] {
   background-size: cover;
   /* background-position: top center; */
   width: 100%;
-  height: 100vh;
+  /* height: 100vh; */
   z-index: -1;
 }
 
 .AskTitle {
-  width: 80%;
+  /* width: 80%; */
   text-align: center;
   position: relative; /* Change to relative positioning */
-  left: 50%;
-  transform: translateX(-50%);
+  /* left: 50%; */
+  /* transform: translateX(-50%); */
   font-family: "Lilita One", cursive;
   color: #ffffff;
   font-size: 120px;
   line-height: 85%;
   animation: slideFromTop2 1.5s ease-out forwards; /* Apply the animation */
   z-index: -3;
-  top: 20px;
+  /* top: 20px; */
 }
 
 .AskTitle::before {
@@ -200,13 +200,14 @@ input[type="checkbox"] {
 .monitor {
   position: relative;
   background-color: #00cbff;
-  top: 35%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
+  /* top: 35%; */
+  /* left: 50%; */
+  /* transform: translate(-50%, -50%); */
   width: 700px;
   height: 300px;
   z-index: 2;
+  margin: auto;
+  margin-top: 50px;
 }
 
 .frame1 {
@@ -237,20 +238,73 @@ input[type="checkbox"] {
   z-index: 2;
 }
 
-#ip2 {
+#textInput {
   position: relative;
   border-radius: 25px;
-  top: 30%;
+  /* top: 30%; */
   padding: 20px;
   width: 700px;
-  height: 15px;
+  /* height: 15px; */
   background-color: #00cbff;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  /* left: 50%; */
+  /* transform: translate(-50%, -50%); */
   z-index: index 5; /* Set a high z-index value */
+  margin-right: 20px;
 }
 
-::placeholder {
+/* chatbot */
+.userInput {
+  margin-top: 75px;
+  display: flex;
+  justify-content: center;
+}
+
+#buttonInput {
+  width: 10%;
+  text-align: center;
+  padding: 20px;
+}
+
+.userText {
+  color: white;
+  font-family: "Lilita One", cursive;
+  font-size: 17px;
+  text-align: right;
+  line-height: 30px;
+  margin-bottom: 20px;
+}
+
+.userText span {
+  background-color: #009688;
+  padding: 10px;
+  border-radius: 2px;
+  text-overflow: break-word;
+}
+
+.botText {
+  color: white;
+  font-family: "Lilita One", cursive;
+  font-size: 17px;
+  text-align: left;
+  line-height: 30px;
+  margin-bottom: 20px
+}
+
+.botText span {
+  background-color: gray;
+  padding: 10px;
+  border-radius: 2px;
+  text-overflow: break-word;
+}
+
+#chatbox {
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+  margin-top: 60px;
+}
+
+::placeholder, input {
   font-family: "Lilita One", cursive;
   color: #00002c;
   text-align: left;
@@ -428,12 +482,11 @@ footer {
     display: block;
   }
 
-  .Title {    
+  .Title {
     display: flex;
     justify-content: center;
     font-size: 70px;
     animation: slideFromTop 1.5s ease-out forwards; /* Apply the animation */
-    
   }
   @keyframes slideFromTop {
     0% {
@@ -466,10 +519,9 @@ footer {
   .monitor {
     position: relative;
     background-color: #00cbff;
-    top: 25%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
+    /* top: 25%; */
+    /* left: 50%; */
+    /* transform: translate(-50%, -50%); */
     width: 231px;
     height: 231px;
     z-index: 2;
@@ -493,7 +545,7 @@ footer {
     max-width: 90%;
   }
 
-  #ip2 {
+  #textInput {
     width: 310px;
   }
 
