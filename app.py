@@ -21,6 +21,18 @@ def about():
 
     return render_template('my-cabinet.html', data=data)
 
+@app.route('/medicineList')
+def medicine_list():
+    # You can provide data specific to the medicine list page if needed
+    data = {'tab_name': 'Medicine List'}
+    return render_template('medicineList.html', data=data)
+
+@app.route('/medicineDetails')
+def medicine_details():
+    # You can provide data specific to the medicine list page if needed
+    data = {'tab_name': 'Medicine Details'}
+    return render_template('medicineDetails.html', data=data)
+
 messages = [{"role": "system", "content": "I want you to act like a medical chatbot named Medi-bot. The chatbot will ask questions about the illness which a user may be having and will then inform the user on whether they need antibiotics or not. The chatbot will also ask follow up questions to narrow down the solution, such as age and severity of issue."}]
 
 def generate_text_stream(question):

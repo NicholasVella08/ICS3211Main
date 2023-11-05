@@ -452,6 +452,208 @@ footer {
   }
 }
 
+
+/*medicineList.html*/
+.medicineList {
+  position: relative;
+  /*background-image: url() no-repeat;*/
+  background: #00002c;
+  background-size: cover;
+
+  /*background-position: top center;*/
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
+  overflow: hidden;
+
+  padding-top: 75px;
+}
+
+.medTitle {
+  width: 80%;
+  text-align: center;
+  position: relative; /* Change to relative positioning */
+  top: -100px; /* Start from above the container */
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: "Lilita One", cursive;
+  color: #ffffff;
+  font-size: 90px;
+  line-height: 85%;
+  animation: slideFromTop 1.5s ease-out forwards; /* Apply the animation */
+}
+
+@keyframes slideFromTop {
+  0% {
+    top: -100px; /* Start from above the container */
+  }
+  100% {
+    top: 20px; /* End at the specified top position */
+  }
+}
+
+.medTitle::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+/* Center the container horizontally and vertically */
+.medicine {
+  display: flex;
+  justify-content: center;
+  margin-top: -8%;
+ /* align-items: center;*/
+  min-height: 100vh;
+}
+
+/* Style the centered list */
+.medList {
+  list-style-type: none;
+  padding: 0;
+  text-align: center;
+}
+
+.medList li {
+ /* margin: 10px 0;  Add space between list items */
+  font-family: "Lilita One", cursive;
+  font-size: 30px;
+}
+
+.medList li a {
+  color: #ffffff; /* Set the text color to white */
+  text-decoration: none; /* Remove the underline */
+}
+
+.medSymtoms{
+  width: 300px;
+  height: auto;
+  z-index: 20;
+  margin-left: 75%;
+}
+
+
+/* Media query for small screens */
+@media (max-width: 768px) {
+  .medTitle {
+    font-size: 50px;
+  }
+
+  .medicine {
+    margin-top: 10%;
+    min-height: 100vh;
+  }
+  
+  .medList li {
+    font-size: 20px;
+  }
+  
+  .medSymtoms{
+    width: 150px;
+    margin-top: 25%;
+    margin-left: 60%;
+  }
+  
+}
+
+/*medicineDetails.html*/
+.medicineDet {
+  position: relative;
+  /*background-image: url() no-repeat;*/
+  background: #00002c;
+  background-size: cover;
+
+  /*background-position: top center;*/
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
+  overflow: hidden;
+
+  padding-top: 75px;
+}
+
+.medDetTitle {
+  width: 80%;
+  text-align: center;
+  position: relative; /* Change to relative positioning */
+  top: -100px; /* Start from above the container */
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: "Lilita One", cursive;
+  color: #ffffff;
+  font-size: 70px;
+  line-height: 85%;
+  animation: slideFromTop 1.5s ease-out forwards; /* Apply the animation */
+}
+
+@keyframes slideFromTop {
+  0% {
+    top: -100px; /* Start from above the container */
+  }
+  100% {
+    top: 20px; /* End at the specified top position */
+  }
+}
+
+.medDetTitle::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+@media (max-width: 768px) {
+  .medDetTitle {
+    font-size: 30px;
+  }
+}
+.details-container {
+  display: flex;
+  justify-content: center; /* Horizontally center the content */
+  /*align-items: center; /* Vertically center the content */
+  height: 100vh; /* Set a minimum height for the page */
+}
+
+.text-content {
+  margin-top: 10%;
+  flex: 1; /* Allow the text content to grow and occupy available space */
+  padding: 20px; /* Add some padding for spacing */
+  max-width: 40%;
+}
+
+.text-content p{
+  font-family: "Lilita One", cursive;
+  color: #ffffff;
+  font-size: 20px;
+  padding-top: 20px;
+}
+
+.image-content {
+  flex: 1; /* Allow the image content to grow and occupy available space */
+  text-align: center; /* Center the image horizontally */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-content img {
+  width: 360px; /* Ensure the image doesn't exceed its container width */
+  height: auto; /* Maintain the image's aspect ratio */
+  margin-left: 40% ;
+  margin-top: -10%;
+}
+
+
+
+
+
 /* APPLYING MEDIA QUERIES */
 @media (max-width: 768px) {
   .menu {
