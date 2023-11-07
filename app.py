@@ -1,58 +1,97 @@
-import time
-from flask import Flask, Response, redirect, render_template, request, send_file, url_for
-from datetime import datetime
+from flask import Flask, Response, render_template, request, session
 import g4f
+from flask_kvsession import KVSessionExtension
+import pandas as pd
+from simplekv.fs import FilesystemStore
 
 # Define the app using Flask
 app = Flask(__name__)
+app.secret_key = 'secretkey'
 
 data = {}
+
+store = FilesystemStore('./data/user_sessions')
+KVSessionExtension(store, app)
+
+med_data = pd.read_excel(
+    './data/medicine_details/medicine.xlsx', sheet_name=None)
 
 
 @app.route('/')
 def index():
+
     return render_template('index.html', data=data)
 
 
 @app.route('/my-cabinet')
 def about():
 
-    data = {'tab_name': 'My Cabinet'}
+    data = {'tab_name': 'My Cabinet', 'illnesses': med_data['types']}
 
     return render_template('my-cabinet.html', data=data)
 
-@app.route('/medicineList')
+
+@app.route('/medicine-list')
 def medicine_list():
-    # You can provide data specific to the medicine list page if needed
-    data = {'tab_name': 'Medicine List'}
-    return render_template('medicineList.html', data=data)
+    typeId = int(request.args.get('typeId'))
 
-@app.route('/medicineDetails')
+    medicine = med_data['medicine'][med_data['medicine'].type == typeId]
+
+    data = {'tab_name': 'Medicine List', 'medicine': medicine, 'medicine_name': med_data['types'].iloc[typeId]['name']}
+
+    return render_template('medicine-list.html', data=data)
+
+
+@app.route('/medicine-details')
 def medicine_details():
-    # You can provide data specific to the medicine list page if needed
-    data = {'tab_name': 'Medicine Details'}
-    return render_template('medicineDetails.html', data=data)
+    med_id = int(request.args.get('medId'))
 
-messages = [{"role": "system", "content": "I want you to act like a medical chatbot named Medi-bot. The chatbot will ask questions about the illness which a user may be having and will then inform the user on whether they need antibiotics or not. The chatbot will also ask follow up questions to narrow down the solution, such as age and severity of issue."}]
+    med_details = med_data['medicine'].iloc[med_id]
 
-def generate_text_stream(question):
-    messages.append({"role": "user", "content": question})
+    data = {'tab_name': med_details['name'], 'med': med_details}
+
+    return render_template('medicine-details.html', data=data)
+
+
+@app.route("/get", methods=['GET'])
+def get_bot_response():
+    userText = request.args.get('msg')
+
+    if 'messages' not in session:
+        session['messages'] = [{"role": "system", "content": "I want you to act like a medical chatbot named Medi-bot. The chatbot will ask questions about the illness which a user may be having and will then inform the user on whether they need antibiotics or not. The chatbot will also ask follow up questions to narrow down the solution, such as age and severity of issue. If the user asks a question not medical related answer with: 'This question is not within my scope'"}]
+
+    current_messages = session['messages']
+    current_messages.append({"role": "user", "content": userText})
+
+    session['messages'] = current_messages
 
     response = g4f.ChatCompletion.create(
         model=g4f.models.gpt_4,
-        messages=messages,
+        messages=session['messages'],
         stream=True,
         provider=g4f.Provider.Bing,
     )
-    
-    for message in response:
-        yield message
 
-@app.route("/get")
-def get_bot_response():
-    userText = request.args.get('msg')
-    
-    return Response(generate_text_stream(str(userText)), content_type='text/plain')
+    def generate_text_stream(response):
+        for message in response:
+            yield message
+
+    return Response(generate_text_stream(response), content_type='text/plain')
+
+
+@app.route("/save_bot_response", methods=['POST'])
+def save_bot_response():
+    # Assuming the botText is sent as raw data in the request body
+    bot_text = request.get_data(as_text=True)
+
+    current_messages = session['messages']
+    current_messages.append({"role": "Medi-bot", "content": bot_text})
+
+    session['messages'] = current_messages
+
+    # You can return any response as needed
+    return "Bot response saved successfully"
+
 
 if __name__ == '__main__':
     app.run(debug=True)

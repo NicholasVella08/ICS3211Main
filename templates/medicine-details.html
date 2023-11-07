@@ -1,0 +1,17 @@
+{% extends 'base.html' %} {% block content %}
+
+<section class="medicineDet" id="medicineDet">
+    <div class="medDetTitle">{{data.med['name']}}</div>
+
+    <div class="details-container">
+        <div class="text-content">
+            <p>Description: {{data.med.description}}</p>
+            <p>Side Effects: {{data.med.effects}}</p>
+            <p>Dosage: {{data.med.dose}}</p>
+        </div>
+        <div class="image-content">
+            <img src="static\assets\medicine\{{data.med.name}}.png" alt="Medicine Image">
+        </div>
+
+</section>
+{% endblock %}

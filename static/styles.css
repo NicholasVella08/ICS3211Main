@@ -250,7 +250,6 @@ input[type="checkbox"] {
   /* transform: translate(-50%, -50%); */
   z-index: index 5; /* Set a high z-index value */
   margin-right: 20px;
-  
 }
 
 /* chatbot */
@@ -264,7 +263,6 @@ input[type="checkbox"] {
   width: 100px;
   text-align: center;
   padding: 20px;
- 
 }
 
 .userText {
@@ -274,14 +272,24 @@ input[type="checkbox"] {
   text-align: right;
   line-height: 30px;
   margin-bottom: 20px;
-  margin-right: -50%;
+  margin-right: -50%;    
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.userText img {
+  width: 50px;
+  vertical-align: middle;
+  padding-left: 5px;
 }
 
 .userText span {
-  background-color: #00002C;
+  background-color: #00002c;
   padding: 10px;
   border-radius: 30px;
   text-overflow: break-word;
+  display: inline-block;
 }
 
 .botText {
@@ -292,17 +300,20 @@ input[type="checkbox"] {
   line-height: 30px;
   margin-bottom: 20px;
   margin-left: -50%;
+  display: flex;
+  align-items: flex-start;
 }
 
-.botText img{
+.botText img {
   width: 50px;
   vertical-align: middle;
 }
 .botText span {
-  background-color: #00002C;
+  background-color: #00002c;
   padding: 10px;
   border-radius: 30px;
   text-overflow: break-word;
+  display: inline-block;
 }
 
 .chatArea {
@@ -311,11 +322,9 @@ input[type="checkbox"] {
   padding-bottom: 10px; /* Adjust as needed for extra space at the bottom */
   display: block; /* Set to block to ensure it takes the full width available */
   width: 55%;
-  background-color: #00CBFF;
-  border-radius: 30px; 
+  background-color: #00cbff;
+  border-radius: 30px;
 }
-
-
 
 #chatbox {
   margin-left: auto;
@@ -324,7 +333,8 @@ input[type="checkbox"] {
   margin-top: 60px;
 }
 
-::placeholder, input {
+::placeholder,
+input {
   font-family: "Lilita One", cursive;
   color: #00002c;
   text-align: left;
@@ -332,15 +342,14 @@ input[type="checkbox"] {
 }
 
 @media (max-width: 768px) {
-
   .chatArea {
     margin: 15% auto; /* Center the div horizontally and add 5% margin at the top */
     padding-top: 1px; /* Adjust as needed for extra space at the top */
     padding-bottom: 10px; /* Adjust as needed for extra space at the bottom */
     display: block; /* Set to block to ensure it takes the full width available */
     width: 100%;
-    background-color: #00CBFF;
-    border-radius: 30px; 
+    background-color: #00cbff;
+    border-radius: 30px;
   }
 
   .botText {
@@ -353,7 +362,7 @@ input[type="checkbox"] {
     margin-left: -40%;
   }
 
-  .botText img{
+  .botText img {
     width: 30px;
     vertical-align: middle;
   }
@@ -371,9 +380,7 @@ input[type="checkbox"] {
     width: 80px;
     text-align: center;
     padding: 20px;
-   
   }
-
 }
 
 /*pharmacies map*/
@@ -519,7 +526,6 @@ footer {
   }
 }
 
-
 /*medicineList.html*/
 .medicineList {
   position: relative;
@@ -574,7 +580,7 @@ footer {
   display: flex;
   justify-content: center;
   margin-top: -8%;
- /* align-items: center;*/
+  /* align-items: center;*/
   min-height: 100vh;
 }
 
@@ -586,7 +592,7 @@ footer {
 }
 
 .medList li {
- /* margin: 10px 0;  Add space between list items */
+  /* margin: 10px 0;  Add space between list items */
   font-family: "Lilita One", cursive;
   font-size: 30px;
 }
@@ -596,13 +602,12 @@ footer {
   text-decoration: none; /* Remove the underline */
 }
 
-.medSymtoms{
+.medSymptoms {
   width: 300px;
   height: auto;
   z-index: 20;
   margin-left: 75%;
 }
-
 
 /* Media query for small screens */
 @media (max-width: 768px) {
@@ -614,17 +619,16 @@ footer {
     margin-top: 10%;
     min-height: 100vh;
   }
-  
+
   .medList li {
     font-size: 20px;
   }
-  
-  .medSymtoms{
+
+  .medSymptoms {
     width: 150px;
     margin-top: 25%;
     margin-left: 60%;
   }
-  
 }
 
 /*medicineDetails.html*/
@@ -677,7 +681,6 @@ footer {
   z-index: -1;
 }
 
-
 .details-container {
   display: flex;
   justify-content: center; /* Horizontally center the content */
@@ -692,7 +695,7 @@ footer {
   max-width: 40%;
 }
 
-.text-content p{
+.text-content p {
   font-family: "Lilita One", cursive;
   color: #ffffff;
   font-size: 20px;
@@ -710,7 +713,7 @@ footer {
 .image-content img {
   width: 360px; /* Ensure the image doesn't exceed its container width */
   height: auto; /* Maintain the image's aspect ratio */
-  margin-left: 40% ;
+  margin-left: 40%;
   margin-top: -10%;
 }
 
@@ -719,7 +722,7 @@ footer {
     font-size: 30px;
   }
   .details-container {
-    display:contents;
+    display: contents;
   }
 
   .text-content {
@@ -728,23 +731,19 @@ footer {
     padding: 20px; /* Add some padding for spacing */
     max-width: 100%;
   }
-  
-  .text-content p{
+
+  .text-content p {
     font-size: 15px;
     padding-top: 20px;
   }
-  
-  
+
   .image-content img {
     width: 200px; /* Ensure the image doesn't exceed its container width */
     height: auto; /* Maintain the image's aspect ratio */
     margin-left: 8%;
     margin-top: 5%;
   }
-
 }
-
-
 
 /* APPLYING MEDIA QUERIES */
 @media (max-width: 768px) {
@@ -874,6 +873,4 @@ footer {
     font-size: 40px;
     line-height: 85%;
   }
-
-  
 }

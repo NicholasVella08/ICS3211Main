@@ -3,38 +3,12 @@
 <section class="listHome" id="listHome">
   <div class="listTitle">My Cabinet</div>
   <div class="image-grid">
-    <a href="/medicineList" class="image">
-      <img src="static\assets\cabinet\pollen-allergy.png" alt="Image 1" />
-      <p>Allergies</p>
+    {% for index, row in data.illnesses.iterrows() %}
+    <a href="/medicine-list?typeId={{row['id']}}" class="image">
+      <img src="static\assets\cabinet\{{row['image']}}" alt="Image 1" />
+      <p>{{row['name']}}</p>
     </a>
-    <a href="\#home" class="image">
-      <img src="static\assets\cabinet\dizzy-face.png" alt="Image 2" />
-      <p>Headache</p>
-    </a>
-    <a href="\#home" class="image">
-      <img src="static\assets\cabinet\skincare.png" alt="Image 3" />
-      <p>Skin Treatment</p>
-    </a>
-    <a href="\#home" class="image">
-      <img src="static\assets\cabinet\stomachache.png" alt="Image 4" />
-      <p>Nausea</p>
-    </a>
-    <a href="\#home" class="image">
-      <img src="static\assets\cabinet\cold.png" alt="Image 5" />
-      <p>Running Nose</p>
-    </a>
-    <a href="\#home" class="image">
-      <img src="static\assets\cabinet\remedy.png" alt="Image 6" />
-      <p>Fever</p>
-    </a>
-    <a href="\#home" class="image">
-      <img src="static\assets\cabinet\parkinsons.png" alt="Image 7" />
-      <p>Parkinsons</p>
-    </a>
-    <a href="\#home" class="image">
-      <img src="static\assets\cabinet\virus-transmission.png" alt="Image 8" />
-      <p>Coughs</p>
-    </a>
+    {% endfor %}
   </div>
 </section>
 {% endblock %}

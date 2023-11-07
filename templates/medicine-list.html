@@ -1,0 +1,18 @@
+{% extends 'base.html' %} {% block content %}
+
+<section class="medicineList" id="medicineList">
+  <div class="medTitle">{{data.medicine_name}}</div>
+
+  <img src="static\assets\cabinet\pollen-allergy.png" class="medSymptoms" />
+
+  <div class="medicine">
+    <ul class="medList">
+      {% for index, row in data.medicine.iterrows() %}
+      <li>
+        <a href="/medicine-details?medId={{index}}">{{row['name']}}</a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+{% endblock %}
