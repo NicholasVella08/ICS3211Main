@@ -257,12 +257,22 @@ input[type="checkbox"] {
   margin-top: 75px;
   display: flex;
   justify-content: center;
+  height: 100px;
 }
 
-#buttonInput {
-  width: 100px;
+.inputButtons {
   text-align: center;
   padding: 20px;
+}
+
+.volumeControlContainer {
+  position: relative;
+  display: flex;
+}
+
+.volumeControl {
+  position: absolute;
+  display: none;
 }
 
 .userText {
@@ -272,7 +282,7 @@ input[type="checkbox"] {
   text-align: right;
   line-height: 30px;
   margin-bottom: 20px;
-  margin-right: -50%;    
+  margin-right: -50%;
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -376,8 +386,7 @@ input {
     margin-bottom: 20px;
   }
 
-  #buttonInput {
-    width: 80px;
+  .inputButtons {
     text-align: center;
     padding: 20px;
   }

@@ -49,35 +49,57 @@ function getBotResponse() {
 
   // Use the Fetch API to handle the streaming content
   fetch("/get?msg=" + rawText)
-  .then((response) => response.body.getReader())
-  .then(async (reader) => {
-    const processStream = async () => {
-      while (true) {
-        const { done, value } = await reader.read();
+    .then((response) => response.body.getReader())
+    .then(async (reader) => {
+      const processStream = async () => {
+        while (true) {
+          const { done, value } = await reader.read();
 
-        if (done) {
-          // If the stream is done, break out of the loop
-          break;
+          if (done) {
+            // If the stream is done, break out of the loop
+            break;
+          }
+
+          // Decode the value as UTF-8
+          const decodedValue = new TextDecoder("utf-8").decode(value);
+
+          // Set the decoded value as text content of the bot span
+          botSpan.text(botSpan.text() + decodedValue);
         }
+      };
 
-        // Decode the value as UTF-8
-        const decodedValue = new TextDecoder("utf-8").decode(value);
+      // Start processing the stream
+      await processStream();
 
-        // Set the decoded value as text content of the bot span
-        botSpan.text(botSpan.text() + decodedValue);
-      }
-    };
+      // Use SpeechSynthesis to speak out the bot response
+      const synth = window.speechSynthesis;
+      const utterance = new SpeechSynthesisUtterance(botSpan.text());
+      const volumeControl = document.getElementById("volumeControl");
 
-    // Start processing the stream
-    await processStream();
+      // Set initial volume
+      utterance.volume = volumeControl.value / 100;
+      synth.speak(utterance);
 
-    // After processing the stream, initiate the second fetch
-    await fetch("/save_bot_response", { method: "POST", body: botSpan.text() });
-  })
-  .catch((error) => {
-    // Handle errors here
-    console.error("Error:", error);
-  });
+      // Add event listener to adjust utterance volume when volume control changes
+      volumeControl.addEventListener("input", function () {
+        // Stop the current synthesis
+        synth.cancel();
+
+        // Start a new synthesis with the updated volume
+        utterance.volume = volumeControl.value / 100;
+        synth.speak(utterance);
+      });
+
+      // After processing the stream, initiate the second fetch
+      await fetch("/save_bot_response", {
+        method: "POST",
+        body: botSpan.text(),
+      });
+    })
+    .catch((error) => {
+      // Handle errors here
+      console.error("Error:", error);
+    });
 }
 
 $("#textInput").keypress(function (e) {
@@ -87,8 +109,97 @@ $("#textInput").keypress(function (e) {
 });
 
 $("#buttonInput").click(function () {
-  console.log("button clicked");
   if (document.getElementById("textInput").value != "") {
     getBotResponse();
   }
+});
+
+let isMuted = false;
+let previousVolume = 100; // Initial volume
+
+function showVolumeControl() {
+  const volumeControl = document.getElementById("volumeControl");
+  volumeControl.style.display = "block";
+}
+
+function hideVolumeControl() {
+  const volumeControl = document.getElementById("volumeControl");
+  volumeControl.style.display = "none";
+}
+
+function toggleMute() {
+  const speakerButton = document.getElementById("speakerButton");
+  const volumeControl = document.getElementById("volumeControl");
+
+  if (isMuted) {
+    // Unmute - apply the previous volume value
+    volumeControl.value = previousVolume;
+    speakerButton.src = "static/assets/speaker.png";
+  } else {
+    // Mute - cache the previous volume value and set volume to 0
+    previousVolume = volumeControl.value;
+    volumeControl.value = 0;
+    speakerButton.src = "static/assets/speaker_muted.png";
+  }
+
+  // Update the mute status
+  isMuted = !isMuted;
+}
+
+function changeVolume() {
+  const speakerButton = document.getElementById("speakerButton");
+  const volumeControl = document.getElementById("volumeControl");
+  // Use the volume value as needed, e.g., to set the volume for audio output
+  const volume = volumeControl.value;
+  // Implement the logic to use the volume value
+  if (volume == 0) {
+    isMuted = true;
+    speakerButton.src = "static/assets/speaker_muted.png";
+  } else {
+    isMuted = false;
+    speakerButton.src = "static/assets/speaker.png";
+  }
+  // Update the previous volume value if not muted
+  if (!isMuted) {
+    previousVolume = volume;
+  }
+}
+
+listening = false;
+
+document.addEventListener("DOMContentLoaded", function () {
+  const voiceInputButton = document.getElementById("voiceInputButton");
+  const textInput = document.getElementById("textInput");
+
+  const recognition = new webkitSpeechRecognition();
+  recognition.continuous = false;
+  recognition.interimResults = false;
+
+  voiceInputButton.addEventListener("click", function () {
+    if (!listening) {
+      listening = true;
+      recognition.start();
+      voiceInputButton.classList.add("listening");
+      voiceInputButton.src = "static/assets/microphone_green.png";
+    } else {
+      listening = false;
+      recognition.stop();
+    }
+  });
+
+  recognition.onresult = function (event) {
+    const transcript = event.results[0][0].transcript;
+    textInput.value = transcript;
+  };
+
+  recognition.onend = function () {
+    // This event is triggered when recognition stops
+    voiceInputButton.classList.remove("listening");
+    voiceInputButton.src = "static/assets/microphone_grey.png";
+    recognition.stop();
+  };
+
+  recognition.onerror = function (event) {
+    console.error("Speech recognition error:", event.error);
+  };
 });
