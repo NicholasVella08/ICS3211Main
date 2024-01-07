@@ -57,7 +57,7 @@ def medicine_details():
 def get_bot_response():
     userText = request.args.get('msg')
 
-    if 'messages' not in session:
+    if 'messages' not in session or len(session['messages']) > 5:
         session['messages'] = [{"role": "system", "content": "I want you to act like a medical chatbot named Medi-bot. The chatbot will ask questions about the illness which a user may be having and will then inform the user on whether they need antibiotics or not. The chatbot will also ask follow up questions to narrow down the solution, such as age and severity of issue. If the user asks a question not medical related answer with: 'This question is not within my scope'"}]
 
     current_messages = session['messages']
@@ -70,6 +70,7 @@ def get_bot_response():
         messages=session['messages'],
         stream=True,
         provider=g4f.Provider.Bing,
+        cookies={"Fake": ""}
     )
 
     def generate_text_stream(response):

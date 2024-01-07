@@ -241,13 +241,9 @@ input[type="checkbox"] {
 #textInput {
   position: relative;
   border-radius: 25px;
-  /* top: 30%; */
   padding: 20px;
   width: 700px;
-  /* height: 15px; */
   background-color: #00cbff;
-  /* left: 50%; */
-  /* transform: translate(-50%, -50%); */
   z-index: index 5; /* Set a high z-index value */
   margin-right: 20px;
 }
@@ -263,6 +259,10 @@ input[type="checkbox"] {
 .inputButtons {
   text-align: center;
   padding: 20px;
+}
+
+.buttons{
+  display: flex;
 }
 
 .volumeControlContainer {
@@ -389,6 +389,7 @@ input {
   .inputButtons {
     text-align: center;
     padding: 20px;
+    max-width: 100px;
   }
 }
 
@@ -849,6 +850,7 @@ footer {
 
   #textInput {
     width: 310px;
+    align-self: center;
   }
 
   .map {
@@ -881,5 +883,15 @@ footer {
     color: #ffffff;
     font-size: 40px;
     line-height: 85%;
+  }
+
+  .userInput {    
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .buttons{
+    justify-content: center;
+    align-items: center;
   }
 }

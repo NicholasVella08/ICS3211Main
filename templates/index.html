@@ -30,43 +30,45 @@
       name="msg"
       placeholder="Type Your Question Here...."
     />
-    <input
-      id="buttonInput"
-      class="inputButtons"
-      type="image"
-      src="static\assets\input.png"
-      alt="Send"
-    />
-    <input
-      id="voiceInputButton"
-      class="inputButtons"
-      type="image"
-      src="static/assets/microphone_grey.png"
-      alt="Microphone"
-    />
-    <div
-      class="volumeControlContainer"
-      onmouseover="showVolumeControl()"
-      onmouseout="hideVolumeControl()"
-    >
+    <div class="buttons">
       <input
-        id="volumeControl"
-        class="volumeControl"
-        type="range"
-        min="0"
-        max="100"
-        step="1"
-        value="100"
-        oninput="changeVolume()"
-      />
-      <input
-        id="speakerButton"
+        id="buttonInput"
         class="inputButtons"
         type="image"
-        src="static/assets/speaker.png"
-        alt="Speaker"
-        onclick="toggleMute()"
+        src="static\assets\input.png"
+        alt="Send"
       />
+      <input
+        id="voiceInputButton"
+        class="inputButtons"
+        type="image"
+        src="static/assets/microphone_grey.png"
+        alt="Microphone"
+      />
+      <div
+        class="volumeControlContainer"
+        onmouseover="showVolumeControl()"
+        onmouseout="hideVolumeControl()"
+      >
+        <input
+          id="volumeControl"
+          class="volumeControl"
+          type="range"
+          min="0"
+          max="100"
+          step="1"
+          value="100"
+          oninput="changeVolume()"
+        />
+        <input
+          id="speakerButton"
+          class="inputButtons"
+          type="image"
+          src="static/assets/speaker.png"
+          alt="Speaker"
+          onclick="toggleMute()"
+        />
+      </div>
     </div>
   </div>
 </section>
