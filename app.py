@@ -37,7 +37,8 @@ def medicine_list():
 
     medicine = med_data['medicine'][med_data['medicine'].type == typeId]
 
-    data = {'tab_name': 'Medicine List', 'medicine': medicine, 'medicine_name': med_data['types'].iloc[typeId]['name']}
+    data = {'tab_name': 'Medicine List', 'medicine': medicine,
+            'medicine_name': med_data['types'].iloc[typeId]['name']}
 
     return render_template('medicine-list.html', data=data)
 
@@ -57,17 +58,20 @@ def medicine_details():
 def get_bot_response():
     userText = request.args.get('msg')
 
-    if 'messages' not in session or len(session['messages']) > 5:
-        session['messages'] = [{"role": "system", "content": "I want you to act like a medical chatbot named Medi-bot. The chatbot will ask questions about the illness which a user may be having and will then inform the user on whether they need antibiotics or not. The chatbot will also ask follow up questions to narrow down the solution, such as age and severity of issue. If the user asks a question not medical related answer with: 'This question is not within my scope'"}]
+    system_message = {"role": "system", "content": "You are Medi-bot, a medical chatbot. You will ask questions about any illness which the user may be having and will then inform the user on whether they need antibiotics or not. You will also ask follow up questions to narrow down the solution, such as age and severity of issue. If the user asks a non medical question respond with: 'This question is not within my scope'"}
 
-    current_messages = session['messages']
-    current_messages.append({"role": "user", "content": userText})
+    if 'messages' not in session:
+        session['messages'] = [{"role": "user", "content": userText}]
+    else:
+        messages = session['messages']
+        messages.append({"role": "user", "content": userText})
+        session['messages'] = messages
 
-    session['messages'] = current_messages
-
+    current_messages = [system_message] + session['messages'][-4:]
+    print(current_messages)
     response = g4f.ChatCompletion.create(
         model=g4f.models.gpt_4,
-        messages=session['messages'],
+        messages=current_messages,
         stream=True,
         provider=g4f.Provider.Bing,
         cookies={"Fake": ""}

@@ -81,7 +81,7 @@ function getBotResponse() {
       synth.speak(utterance);
 
       // Add event listener to adjust utterance volume when volume control changes
-      volumeControl.addEventListener("input", function () {
+      volumeControl.addEventListener("change", function () {
         // Stop the current synthesis
         synth.cancel();
 
@@ -144,6 +144,8 @@ function toggleMute() {
 
   // Update the mute status
   isMuted = !isMuted;
+
+  volumeControl.dispatchEvent(new Event('change'));
 }
 
 function changeVolume() {
