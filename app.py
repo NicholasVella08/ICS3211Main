@@ -68,7 +68,7 @@ def get_bot_response():
         session['messages'] = messages
 
     current_messages = [system_message] + session['messages'][-4:]
-    print(current_messages)
+    
     response = g4f.ChatCompletion.create(
         model=g4f.models.gpt_4,
         messages=current_messages,
